@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">VideosView</string>
+    <string name="title_activity_init">initActivity</string>
+</resources>

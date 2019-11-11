@@ -2,9 +2,7 @@ package model;
 
 import com.google.gson.annotations.SerializedName;
 
-import web.RecyclerInterface;
-
-public class Movie {
+public class Videos {
     private String subtitle;
     private String sources;
     private String thumb;
@@ -16,6 +14,15 @@ public class Movie {
     private String imageLarge;
     private String title;
     private String studio;
+    public Videos(String subtitle, String source, String thumb, String imageSmall, String imageLarge, String title, String studio){
+        this.subtitle = subtitle;
+        this.sources = source;
+        this.thumb = thumb;
+        this.imageSmall = imageSmall;
+        this.imageLarge = imageLarge;
+        this.title = title;
+        this.studio = studio;
+    }
 
     public String getSubtitle() {
         return subtitle;
@@ -44,17 +51,17 @@ public class Movie {
     public String getImageSmall() {
         return imageSmall;
     }
-    //adding main URL and rest to Image Path
+
     public void setImageSmall(String imageSmall) {
-        this.imageSmall = RecyclerInterface.JSONURL + imageSmall;
+        this.imageSmall = imageSmall;
     }
 
     public String getImageLarge() {
         return imageLarge;
     }
-    //adding main URL and rest to Image Path
+
     public void setImageLarge(String imageLarge) {
-        this.imageLarge = RecyclerInterface.JSONURL + imageLarge;
+        this.imageLarge = imageLarge;
     }
 
     public String getTitle() {

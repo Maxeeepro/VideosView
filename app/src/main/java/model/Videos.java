@@ -1,5 +1,7 @@
 package model;
 
+import android.util.Log;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -16,12 +18,12 @@ public class Videos {
     private String imageLarge;
     private String title;
     private String studio;
-    public Videos(String subtitle, List<String>sources, String thumb,  String title, String studio){
+    public Videos(String subtitle, List<String>sources, String thumb,  String title, String studio, String imageLarge, String imageSmall){
         this.subtitle = subtitle;
         this.sources = sources;
         this.thumb = thumb;
-//        this.imageSmall = imageSmall;
-//        this.imageLarge = imageLarge;
+        this.imageSmall = imageSmall;
+        this.imageLarge = imageLarge;
         this.title = title;
         this.studio = studio;
     }
@@ -59,6 +61,7 @@ public class Videos {
     }
 
     public String getImageLarge() {
+        Log.d("OnGetImageLarge", "OnGetImageLarge");
         return imageLarge;
     }
 

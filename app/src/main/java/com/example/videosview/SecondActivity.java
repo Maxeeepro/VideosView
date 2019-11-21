@@ -3,54 +3,63 @@ package com.example.videosview;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.google.gson.reflect.TypeToken;
-
+import java.util.ArrayList;
 import java.util.List;
+
+import model.Movies;
+import model.Movie;
 import model.Videos;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import web.CustomAdapter;
 import web.GetDataService;
-import web.GetItemListDeserializer;
 import web.RetrofitCreateInstance;
 
 public class SecondActivity extends AppCompatActivity {
     private CustomAdapter adapter;
     private RecyclerView recyclerView;
+    List<Videos> myMovies = new ArrayList<>();
+
+    Movies movies;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        GetDataService service = RetrofitCreateInstance.getRetrofitInstance(new TypeToken<List<Videos>>() {}.getType(), new GetItemListDeserializer()).create(GetDataService.class);
-        //create object call's type
-        Call<List<Videos>> call = service.getAllMovies();
-        call.enqueue(new Callback<List<Videos>>() {
-            @Override
-            public void onResponse(Call<List<Videos>> call, Response<List<Videos>> response) {
-                generatDataList(response.body());
-                Log.d("OnResponse", response.body().toString());
-            }
-
-            @Override
-            public void onFailure(Call<List<Videos>> call, Throwable t) {
-
-                Log.d("oNSomethingWrong" , "Something wrong" + t.getMessage());
-                Toast.makeText(SecondActivity.this, "Something wrong with response",Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-//Method for generation List of data using RecyclerView with custom adapter
-    private void generatDataList(List<Videos> videosList){
         recyclerView = findViewById(R.id.recycler);
-        adapter = new CustomAdapter(this, videosList);
+        adapter = new CustomAdapter(this, myMovies);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SecondActivity.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        loadMovies();
+
     }
+    public void loadMovies(){
+        GetDataService getDataService = RetrofitCreateInstance.getClient()
+                .create(GetDataService.class);
+        Call<Movies> call = getDataService.getAllMovies();
+        call.enqueue(new Callback<Movies>() {
+            @Override
+            public void onResponse(Call<Movies> call, Response<Movies> response) {
+                if(response.isSuccessful()){
+                    Movies movies = response.body();
+                    Log.d("OnResponse","OnResponse" );
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Movies> call, Throwable t) {
+                Log.d("OnFailure",t.toString() );
+            }
+        });
+
+
+
+    };
 }

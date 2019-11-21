@@ -1,6 +1,7 @@
 package web;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +26,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         this.context = context;
         this.dataList = dataList;
     }
-
-
     @NonNull
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,6 +42,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         holder.title.setText(dataList.get(position).getSubtitle());
  //TODO:(implementation in ViewHolder) holder.title.setText(dataList.get(position).getSources());
         holder.studio.setText(dataList.get(position).getStudio());
+        Log.d("onBindViewHolder", "onBindViewHolder");
     }
 
     @Override

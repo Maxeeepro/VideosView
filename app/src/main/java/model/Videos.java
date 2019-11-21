@@ -2,9 +2,11 @@ package model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class Videos {
     private String subtitle;
-    private String sources;
+    private List<String>sources;
     private String thumb;
     //this annotation need for adding name image property to model
     @SerializedName("image-480x270")
@@ -14,12 +16,12 @@ public class Videos {
     private String imageLarge;
     private String title;
     private String studio;
-    public Videos(String subtitle, String source, String thumb, String imageSmall, String imageLarge, String title, String studio){
+    public Videos(String subtitle, List<String>sources, String thumb,  String title, String studio){
         this.subtitle = subtitle;
-        this.sources = source;
+        this.sources = sources;
         this.thumb = thumb;
-        this.imageSmall = imageSmall;
-        this.imageLarge = imageLarge;
+//        this.imageSmall = imageSmall;
+//        this.imageLarge = imageLarge;
         this.title = title;
         this.studio = studio;
     }
@@ -32,11 +34,11 @@ public class Videos {
         this.subtitle = subtitle;
     }
 
-    public String getSources() {
+    public List<String> getSources() {
         return sources;
     }
 
-    public void setSources(String sources) {
+    public void setSources(List<String> sources) {
         this.sources = sources;
     }
 

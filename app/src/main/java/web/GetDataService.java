@@ -1,7 +1,7 @@
 package web;
-
 import java.util.List;
 
+import model.Movies;
 import model.Videos;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -9,5 +9,5 @@ import retrofit2.http.GET;
 public interface GetDataService {
     //here should be end point for GET request
     @GET("videos-enhanced-c.json")
-    Call<List<Videos>> getAllMovies();
+    Call<Movies> getAllMovies();
 }

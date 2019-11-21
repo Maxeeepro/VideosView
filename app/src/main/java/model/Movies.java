@@ -2,6 +2,6 @@ package model;
 
 import java.util.List;
 
-public class Categories {
-    public List<Movies> categories;
+public class Movies {
+    public List<Movie> categories;
 }

@@ -21,15 +21,16 @@ import model.Videos;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
     private List<Videos> dataList;
     private Context context;
+    LayoutInflater layoutInflater;
     //adapter's constructor
     public CustomAdapter(Context context, List<Videos>dataList){
         this.context = context;
+        this.layoutInflater = LayoutInflater.from(context);
         this.dataList = dataList;
     }
     @NonNull
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.films_items, parent, false);
         Log.d("onCreateViewHolder", "onCreateViewHolder");
         return new CustomViewHolder(view);
@@ -37,11 +38,11 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
+        // was after getImageSmall
         Picasso.get().load(dataList.get(position).getImageSmall()).placeholder(R.drawable.no_image).into(holder.smlImage);
-        Picasso.get().load(dataList.get(position).getImageLarge()).placeholder(R.drawable.no_image_large).into(holder.bigImage);
-        Picasso.get().load(dataList.get(position).getThumb()).placeholder(R.drawable.no_image).into(holder.thumbImage);
+//        Picasso.get().load(dataList.get(position).getImageLarge()).placeholder(R.drawable.no_image_large).into(holder.bigImage);
+//        Picasso.get().load(dataList.get(position).getThumb()).placeholder(R.drawable.no_image).into(holder.thumbImage);
         holder.title.setText(dataList.get(position).getSubtitle());
- //TODO:(implementation in ViewHolder) holder.title.setText(dataList.get(position).getSources());
         holder.studio.setText(dataList.get(position).getStudio());
         Log.d("onBindViewHolder", "onBindViewHolder");
     }
@@ -63,8 +64,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
             smlImage = (ImageView) itemView.findViewById(R.id.imgview_small);
-            bigImage = (ImageView) itemView.findViewById(R.id.imgview_large);
-            thumbImage = (ImageView) itemView.findViewById(R.id.thumb);
+//            bigImage = (ImageView) itemView.findViewById(R.id.imgview_large);
+//            thumbImage = (ImageView) itemView.findViewById(R.id.thumb);
             title = (TextView) itemView.findViewById(R.id.titleview);
             studio = (TextView) itemView.findViewById(R.id.studioview);
         }

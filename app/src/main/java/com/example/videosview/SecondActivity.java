@@ -31,9 +31,6 @@ public class SecondActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SecondActivity.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setAdapter(adapter);
         loadMovies();
     }
     public void loadMovies(){

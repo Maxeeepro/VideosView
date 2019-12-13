@@ -6,6 +6,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+import retrofit2.http.Path;
+
 public class Videos {
     private String subtitle;
     private List<String>sources;
@@ -45,7 +47,7 @@ public class Videos {
     }
 
     public String getThumb() {
-        return thumb;
+        return "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/" + thumb;
     }
 
     public void setThumb(String thumb) {
@@ -53,7 +55,7 @@ public class Videos {
     }
 
     public String getImageSmall() {
-        return imageSmall;
+        return "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/" + imageSmall;
     }
 
     public void setImageSmall(String imageSmall) {
@@ -62,7 +64,7 @@ public class Videos {
 
     public String getImageLarge() {
         Log.d("OnGetImageLarge", "OnGetImageLarge");
-        return imageLarge;
+        return "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/" + imageLarge;
     }
 
     public void setImageLarge(String imageLarge) {

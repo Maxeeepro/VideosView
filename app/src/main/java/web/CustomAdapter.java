@@ -7,21 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.videosview.R;
 import com.squareup.picasso.Picasso;
-
 import java.util.List;
-
 import model.Videos;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomViewHolder> {
-    private List<Videos> dataList;
-    private Context context;
-    LayoutInflater layoutInflater;
+        private List<Videos> dataList;
+        private Context context;
+        LayoutInflater layoutInflater;
     //adapter's constructor
     public CustomAdapter(Context context, List<Videos>dataList){
         this.context = context;
@@ -35,7 +31,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         Log.d("onCreateViewHolder", "onCreateViewHolder");
         return new CustomViewHolder(view);
     }
-
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
         // was after getImageSmall
@@ -46,20 +41,17 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
         holder.studio.setText(dataList.get(position).getStudio());
         Log.d("onBindViewHolder", "onBindViewHolder");
     }
-
     @Override
     public int getItemCount() {
         return dataList.size();
     }
-
-
     //In this class I'll create ViewHolder
     public class CustomViewHolder extends RecyclerView.ViewHolder{
-    ImageView smlImage;
-    ImageView bigImage;
-    ImageView thumbImage;
-    TextView title;
-    TextView studio;
+        ImageView smlImage;
+        ImageView bigImage;
+        ImageView thumbImage;
+        TextView title;
+        TextView studio;
     //View's Holder constructor
     public CustomViewHolder(@NonNull View itemView) {
             super(itemView);

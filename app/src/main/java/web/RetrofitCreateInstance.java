@@ -3,7 +3,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitCreateInstance {
-    private static final String BASE_URL = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/";
+    public static final String BASE_URL = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/";
     private static Retrofit retrofit = null;
 
     public static Retrofit getClient(){

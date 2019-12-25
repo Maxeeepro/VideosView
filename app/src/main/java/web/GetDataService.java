@@ -1,4 +1,7 @@
 package web;
+
+
+import io.reactivex.Observable;
 import model.Movies;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -6,5 +9,5 @@ import retrofit2.http.GET;
 public interface GetDataService {
     //here should be end point for GET request
     @GET("videos-enhanced-c.json")
-    Call<Movies> getAllMovies();
+    Observable<Movies> getAllMovies();
 }

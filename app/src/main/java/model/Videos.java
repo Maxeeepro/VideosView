@@ -1,8 +1,12 @@
 package model;
 
+import android.util.Log;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
+
+import retrofit2.http.Path;
 
 public class Videos {
     private String subtitle;
@@ -16,12 +20,12 @@ public class Videos {
     private String imageLarge;
     private String title;
     private String studio;
-    public Videos(String subtitle, List<String>sources, String thumb,  String title, String studio){
+    public Videos(String subtitle, List<String>sources, String thumb,  String title, String studio, String imageLarge, String imageSmall){
         this.subtitle = subtitle;
         this.sources = sources;
         this.thumb = thumb;
-//        this.imageSmall = imageSmall;
-//        this.imageLarge = imageLarge;
+        this.imageSmall = imageSmall;
+        this.imageLarge = imageLarge;
         this.title = title;
         this.studio = studio;
     }
@@ -43,7 +47,7 @@ public class Videos {
     }
 
     public String getThumb() {
-        return thumb;
+        return "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/" + thumb;
     }
 
     public void setThumb(String thumb) {
@@ -51,7 +55,7 @@ public class Videos {
     }
 
     public String getImageSmall() {
-        return imageSmall;
+        return "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/" + imageSmall;
     }
 
     public void setImageSmall(String imageSmall) {
@@ -59,7 +63,8 @@ public class Videos {
     }
 
     public String getImageLarge() {
-        return imageLarge;
+        Log.d("OnGetImageLarge", "OnGetImageLarge");
+        return "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/" + imageLarge;
     }
 
     public void setImageLarge(String imageLarge) {
